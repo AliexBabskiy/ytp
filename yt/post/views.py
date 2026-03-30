@@ -1,17 +1,16 @@
 from django.shortcuts import render
-# Импортируем модель, чтобы обратиться к ней
-from .models import Post
+#from django.http import HttpResponse
+
 
 def index(request):
-    # Одна строка вместо тысячи слов на SQL:
-    # в переменную posts будет сохранена выборка из 10 объектов модели Post,
-    # отсортированных по полю pub_date по убыванию (от больших значений к меньшим)
-    posts = Post.objects.order_by('-pub_date')[:10]
-    # В словаре context отправляем информацию в шаблон
+    #return HttpResponse('Главная страница')
+    template = 'post/index.html'
+    text = 'Это главная страница проекта Yatube'
     context = {
-        'posts': posts,
+        'text': text,
     }
-    return render(request, 'posts/index.html', context)
+    return render(request, template, context)
+
 
 
 def group_post_list(request):
