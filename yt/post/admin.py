@@ -9,7 +9,8 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ('text',)
     # Добавляем возможность фильтрации по дате
     list_filter = ('pub_date',)
-    
+
+
 # При регистрации модели Post источником конфигурации для неё назначаем
 # класс PostAdmin
 admin.site.register(Post, PostAdmin)
