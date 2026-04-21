@@ -15,7 +15,7 @@
     <main>
       <!-- класс py-5 создает отступы сверху и снизу блока -->
       <div class="container py-5">
-        {% for post in post %}
+        {% for post in posts %}
         <ul>
           <li>
             Автор: {{ post.author.get_full_name }}
@@ -24,8 +24,11 @@
             Дата публикации: {{ post.pub_date|date:"d E Y" }}
           </li>
         </ul>
-        <p>{{ post.text }}</p>    
-        <a href="{% url 'post:group_post_list' %}">все записи группы</a>
+        <p>{{ post.text }}</p>
+        {% if post.group %}   
+          <a href="{% url 'post:group_list' post.group.slug %}">все записи группы</a>
+        {% endif %}
+        {% comment %} <a href="{% url 'post:group_post_list' %}">все записи группы</a> {% endcomment %}
         {% if not forloop.last %}<hr>{% endif %}
       {% endfor %}
       </div>  

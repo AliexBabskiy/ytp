@@ -1,0 +1,38 @@
+<!DOCTYPE html> <!-- Используется html 5 версии -->
+<html lang="ru"> <!-- Язык сайта - русский -->
+  <head>
+
+    <meta charset="utf-8"> <!-- Кодировка сайта -->
+    <!-- Сайт готов работать с мобильными устройствами -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Загружаем фав-иконки -->
+    <title>Последние обновления на сайте</title>
+  </head>
+
+  <body>
+    {% extends 'base.html' %}
+    {% block content %}
+    <main>
+      <!-- класс py-5 создает отступы сверху и снизу блока -->
+      <div class="container py-5">
+        <h1>{{ group.title }}</h1>
+        <p>
+            {{ group.description }}
+        </p>
+        {% for post in posts %}
+            <ul>
+                <li>
+                    Автор: {{ post.author.get_full_name }}
+                </li>
+                <li>
+                    Дата публикации: {{ post.pub_date|date:"d E Y" }}
+                </li>
+            </ul>
+            <p>{{ post.text }}</p>
+            {% if not forloop.last %}<hr>{% endif %}
+        {% endfor %}
+      </div>  
+    </main>
+    {% endblock %}
+  </body>
+</html>

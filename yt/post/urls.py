@@ -7,6 +7,8 @@ app_name = 'post'
 urlpatterns = [
     path('', views.index, name='index'),
 
+    path('group_list/<slug:slug>/', views.group_post, name='group_list'),
+
     path('group_posts/', views.group_post_list, name='group_post_list'),
 
     path(
