@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Об авторе проекта{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <h1>Привет, я автор</h1>
+  
+  <div class="row">
+    <div class="col-12 col-md-8">
+      <p>
+        Я - разработчик, который создал этот проект Yatube. Мне интересно изучать новые технологии и создавать полезные вещи.
+      </p>
+      <p>
+        В мир программирования я пришел через любовь к решению сложных задач и желанию создавать что-то своими руками.
+        Python и Django оказались идеальными инструментами для этого - они позволяют быстро создавать функциональные веб-приложения.
+      </p>
+      <p>
+        В работе мне помогает моя собака Бобик - он всегда рядом, когда я пишу код, и иногда даже дает полезные советы (особенно когда просит прогулку).
+      </p>
+      
+      <h3>Мои ресурсы:</h3>
+      <ul>
+        <li><a href="https://github.com/yourusername" target="_blank">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a></li>
+        <li><a href="https://your-resume.com" target="_blank">Резюме</a></li>
+      </ul>
+    </div>
+    
+    <div class="col-12 col-md-4">
+      <h3>Моя рабочая кружка</h3>
+      <img src="{% static 'img/mug.jpg' %}" alt="Рабочая кружка" class="img-fluid rounded" style="max-width: 300px;">
+      <p class="mt-2">Это моя любимая кружка для программирования!</p>
+      
+      <h3>Мой рабочий стол</h3>
+      <img src="{% static 'img/desk.jpg' %}" alt="Рабочий стол" class="img-fluid rounded" style="max-width: 300px;">
+      <p class="mt-2">Так выглядит идеальный порядок на моем рабочем месте.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

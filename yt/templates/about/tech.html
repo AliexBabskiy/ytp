@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Технологии{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <h1>Вот что я умею</h1>
+  
+  <div class="row">
+    <!-- Боковой блок со списком технологий -->
+    <aside class="col-12 col-md-3">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          Python
+        </li>
+        <li class="list-group-item">
+          Django
+        </li>
+        <li class="list-group-item">
+          HTML/CSS
+        </li>
+        <li class="list-group-item">
+          Bootstrap
+        </li>
+        <li class="list-group-item">
+          SQL (PostgreSQL)
+        </li>
+        <li class="list-group-item">
+          Git
+        </li>
+        <li class="list-group-item">
+          Docker
+        </li>
+      </ul>
+    </aside>
+    
+    <!-- Статья -->
+    <article class="col-12 col-md-9">
+      <p>
+        Для создания этого проекта Yatube я использовал следующие технологии:
+      </p>
+      
+      <h3>Python и Django</h3>
+      <p>
+        Django - мощный фреймворк для создания веб-приложений. Он предоставляет множество готовых компонентов:
+        ORM для работы с базами данных, систему аутентификации пользователей, шаблонизатор и многое другое.
+      </p>
+      
+      <h3>HTML/CSS и Bootstrap</h3>
+      <p>
+        Bootstrap позволил быстро создавать адаптивный интерфейс, который хорошо выглядит на всех устройствах.
+        Я научился работать с компонентами Bootstrap: navbar, cards, forms и другими.
+      </p>
+      
+      <h3>База данных</h3>
+      <p>
+        В проекте используется PostgreSQL - надежная и мощная база данных. Django ORM делает работу с ней очень удобной.
+      </p>
+      
+      <h3>Git</h3>
+      <p>
+        Git помогает управлять версиями проекта и сотрудничать с другими разработчиками.
+        Я освоил основные команды: commit, push, pull, branch, merge.
+      </p>
+      
+      <h3>Что было сложным?</h3>
+      <p>
+        Наиболее сложным было понимание работы Django ORM и создание правильных связей между моделями.
+        Также требовалось время, чтобы понять систему шаблонов и контекста в Django.
+      </p>
+      
+      <h3>Что было интересным?</h3>
+      <p>
+        Создание системы пользователей и аутентификации оказалось очень интересным процессом.
+        Также было увлекательно работать с Bootstrap и создавать адаптивный интерфейс.
+      </p>
+      
+      <div class="mt-4">
+        <img src="{% static 'img/django_logo.png' %}" alt="Django Logo" class="img-fluid" style="max-width: 200px;">
+        <img src="{% static 'img/bootstrap_logo.png' %}" alt="Bootstrap Logo" class="img-fluid ml-3" style="max-width: 200px;">
+      </div>
+    </article>
+  </div>
+</div>
+{% endblock %}

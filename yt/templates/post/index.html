@@ -1,52 +1,36 @@
-<!DOCTYPE html> <!-- Используется html 5 версии -->
-<html lang="ru"> <!-- Язык сайта - русский -->
-  <head>
-
-    <meta charset="utf-8"> <!-- Кодировка сайта -->
-    <!-- Сайт готов работать с мобильными устройствами -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Загружаем фав-иконки -->
-    <title>Последние обновления на сайте</title>
-  </head>
-
-  <body>
-    {% extends 'base.html' %}
-    {% block content %}
-    <main>
-      <!-- класс py-5 создает отступы сверху и снизу блока -->
-      {% for post in posts %}
-      <ul>
-        <li>
-          Автор: {{ post.author.get_full_name }}
-        </li>
-        <li>
-          Дата публикации: {{ post.pub_date|date:"d E Y" }}
-        </li>
-      </ul>
-      <p>{{ post.text }}</p>
-      {% if post.group %}   
-        <a href="{% url 'post:group_list' post.group.slug %}">все записи группы</a>
-      {% endif %}
-      {% if not forloop.last %}<hr>{% endif %}
-      {% endfor %}
-    </main>
-    {% endblock %}
-{% comment %} ---------------------------------------------------------------- {% endcomment %}
-    {% comment %} {% extends 'base.html' %}
-    {% block content %}
-      <h1>Последние обновления на сайте</h1>
-    {% endblock %}
-
-    {% block content1 %}
-      <a href="{% url 'post:group_post_list' %}">все записи группы</a>
-    {% endblock %}
-
-    {% block content2 %}
-      <a href="{% url 'post:group_post_list' %}">все записи группы</a>
-    {% endblock %}
-
-    {% block content3 %}
-      <a href="{% url 'post:group_post_list' %}">все записи группы</a>
-    {% endblock %} {% endcomment %}
-  </body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Последние обновления на сайте{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <h1>Последние обновления на сайте</h1>
+  
+  {% for post in page_obj %}
+  <article>
+    <ul>
+      <li>
+        Автор: {{ post.author.get_full_name }}
+        <a href="{% url 'post:profile' post.author.username %}">
+          все посты пользователя
+        </a>
+      </li>
+      <li>
+        Дата публикации: {{ post.pub_date|date:"d E Y" }}
+      </li>
+    </ul>
+    <p>{{ post.text|linebreaksbr }}</p>
+    <a href="{% url 'post:post_detail' post.id %}">подробная информация</a>
+    <br>
+    {% if post.group %}
+      <a href="{% url 'post:group_list' post.group.slug %}">
+        все записи группы "{{ post.group.title }}"
+      </a>
+    {% endif %}
+    {% if not forloop.last %}<hr>{% endif %}
+  </article>
+  {% empty %}
+    <p>Пока нет ни одной записи.</p>
+  {% endfor %}
+  
+  {% include 'includes/paginator.html' %}  <!-- Добавлено 'post/' -->
+</div>
+{% endblock %}
